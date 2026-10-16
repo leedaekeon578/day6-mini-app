@@ -1,6 +1,6 @@
 TASKS = [
     ("주간 보고서 초안 작성", "HIGH", False),
-    ("회의 자료 작성", "MID", False),
+    ("회의 자료 정리", "MID", False),
     ("책상 정리", "LOW", False),
     ("이메일 답장", "HIGH", True),
 ]
@@ -18,7 +18,7 @@ def sort_tasks(tasks):
 
 def show_tasks(tasks):
     for title, priority, _ in tasks:
-        print(f"{title} ({priority})")
+        print(f"[{priority}] {title}")
 
 
 def main():
