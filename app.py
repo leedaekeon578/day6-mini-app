@@ -1,3 +1,5 @@
+import sys
+
 TASKS = [
     ("주간 보고서 초안 작성", "HIGH", False),
     ("회의 자료 정리", "MID", False),
@@ -17,12 +19,16 @@ def sort_tasks(tasks):
 
 
 def show_tasks(tasks):
-    for title, priority, _ in tasks:
-        print(f"[{priority}] {title}")
+    for title, priority, done in tasks:
+        suffix = " (완료)" if done else ""
+        print(f"[{priority}] {title}{suffix}")
 
 
 def main():
-    show_tasks(sort_tasks(get_pending_tasks(TASKS)))
+    if "--all" in sys.argv[1:]:
+        show_tasks(sort_tasks(TASKS))
+    else:
+        show_tasks(sort_tasks(get_pending_tasks(TASKS)))
 
 
 if __name__ == "__main__":
